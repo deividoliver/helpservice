@@ -1,0 +1,121 @@
+@charset "utf-8";
+* {
+	margin:0;
+}
+img {
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+	#header {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 12px;
+	color: #333;
+	background-color: #999;
+	height: 120px;
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	line-height: 120px;
+	text-decoration: underline;
+}
+#menu {
+	height: 30px;
+	width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #333;
+	color: #FFF;
+	line-height: 30px;
+}
+#conta {
+	height: 25px;
+	width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #333;
+	color: #FFF;
+	line-height: 30px;
+	text-align: right;
+	float: right;
+	padding-right: 10px;
+	
+}
+
+
+
+#logar {
+	height: 30px;
+	width: 955px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: #333;
+	color: #FFF;
+	line-height: 30px;
+	padding-left: 5px;
+}
+#menu ul li {
+	display: inline;
+}
+
+#menu ul li a {
+	text-decoration: none;
+	color: #FFF;
+	font-family: Tahoma, Geneva, sans-serif;
+	padding-top: 3px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	font-size: 18px;
+}
+#menu ul li a:hover {
+	text-decoration: none;
+	color: #FFF;
+	font-family: Tahoma, Geneva, sans-serif;
+	padding-top: 3px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+	padding-left: 5px;
+	font-size: 18px;
+	background-color: #707070;
+}
+#body {
+	font-family: "Comic Sans MS", cursive;
+	font-size: 12px;
+	color: #333;
+	background-color: #FFFBEA;
+	width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+}
+#footer {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size: 10px;
+	color: #FFF;
+	background-color: #333;
+	height: 25px;
+	width: 952px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: right;
+	padding-top: 5px;
+	padding-right: 10px;
+}
+.link {
+	font-size: 16px;
+	font-weight: bolder;
+	color: #000;
+	text-decoration: none;
+}
+#lista_menu {
+	float: left;
+	height: 25px;
+	width: 700px;
+}
+#conta {
+	float: right;
+	height: 25px;
+	width: 200px;
+}
