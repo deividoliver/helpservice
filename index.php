@@ -6,7 +6,7 @@
 	require_once 'template/header_logar.php';
 	
 ?>
-<div id='logar'>Favor informe seus dados para logar</div>
+<div id='logar'>Insira os seus dados para logar</div>
 <div id='body'>
 <table width="324" border="0" align="center">
   <tr>
