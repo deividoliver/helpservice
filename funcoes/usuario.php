@@ -1,25 +1,26 @@
 <?php
-// Neste arquivo ficarão funções do Crud do usuario
+// Neste arquivo ficarï¿½o funï¿½ï¿½es do Crud do usuario
 require_once 'conexao.php';
 require_once 'util.php';
 
 function inserirUsuario() {
 
 	validaSenha('cadUsuario.php');
-
+        
 	$con = conectar();
-	$query = "";	
+        $data = convertDataIngles($_POST[nascimento]);
+	$query = "INSERT INTO `usuarios` (`nome`, `apelido`, `email`, `senha`, `celular`, `perfil`, `nascimento`) VALUES ('$_POST[nome]', '$_POST[apelido]', '$_POST[email]', '$_POST[senha]', '$_POST[celular]', 'U', '$data');";	
 	
 	$rs = mysqli_query($con, $query);
 
 	if ($rs === false) {
 		if (validaApelido()) {
-			return "O login ja existe";
+			return mensagem("O Apelido ja existe");
 		}
-		return mensagem('Houve erro ao tentar inserir o novo usuário');
+		return mensagem('Houve erro ao tentar inserir o novo usuï¿½rio');
 	}
 
-	return mensagem('Usuário cadastrado com sucesso!').redirect('admUsuario.php');
+	return mensagem('Usuï¿½rio cadastrado com sucesso!').redirect('admUsuario.php');
 }
 
 function getAllUsuario() {
@@ -29,7 +30,7 @@ function getAllUsuario() {
 	$rs = mysqli_query($con, $query);
 
 		if (mysql_num_rows($rs)==0) {
-			return "Nenhum usuário cadastrado no sistema";
+			return "Nenhum usuï¿½rio cadastrado no sistema";
 		}
 
 	// return mysql_fetch_assoc($rs); // retorna um array associativo onde os campos viram as chaves e o registro
@@ -42,14 +43,14 @@ function getAllUsuario() {
 							   <td align='center'>
 
 							   <a href='#' onclick=\"javascript:if 
-							   (confirm('você tem certeza que deseja excluir $resultado[nome]')==true){
+							   (confirm('vocï¿½ tem certeza que deseja excluir $resultado[nome]')==true){
                     			location.href = 'delUsuario.php?id=$resultado[apelido]'}\"><img src='imagens/delete.png' alt='Excluir' /></a>
 							   
 							  </td>
 							   
 							</tr>";
 		// Armazenando todos os registros dentro de uma string
-		// cada registro da tabela vira uma nova tr(linha html) onde os valores deverão ficar dentro das tds
+		// cada registro da tabela vira uma nova tr(linha html) onde os valores deverï¿½o ficar dentro das tds
 	}
 	return $resultadoFinal;
 }
@@ -61,12 +62,12 @@ function getUsuario() {
 	$rs = mysqli_query($con, $query);
 
 		if (mysqli_num_rows($rs)==0) {
-			return "Nenhum usuário cadastrado no sistema";
+			return "Nenhum usuï¿½rio cadastrado no sistema";
 		}
 	return mysql_fetch_assoc($rs);
 }
 
-//Função para edita usuarios
+//Funï¿½ï¿½o para edita usuarios
 function editUsuario() {
 	validaSenha('editUsuario.php');
 	$con = conectar();
@@ -79,12 +80,12 @@ function editUsuario() {
 			if (validaLogin()) {
 				return "O login ja existe";
 			}
-			return "Houve um erro ao tentar editar o usuário";
+			return "Houve um erro ao tentar editar o usuï¿½rio";
 		}
 	return true;
 }
 
-//Função para deletar usuarios
+//Funï¿½ï¿½o para deletar usuarios
 function delUsuario() {
 	$con = conectar();
 	$query = "DELETE FROM usuarios WHERE id = $_GET[id]";
@@ -94,11 +95,11 @@ function delUsuario() {
 		if ($rs === false) {
 			return mensagem('Erro ao exluir usuario').redirect('admUsuario.php');
 		}else{
-			return mensagem('Usuário excluido com sucesso').redirect('admUsuario.php');
+			return mensagem('Usuï¿½rio excluido com sucesso').redirect('admUsuario.php');
 		}
 }
 
-//Função para logar usuarios
+//Funï¿½ï¿½o para logar usuarios
 function logar() {
 	$con = conectar();
 	
@@ -119,7 +120,7 @@ function logar() {
 	}
 }
 
-//Função para criar uma sessao de usuario
+//Funï¿½ï¿½o para criar uma sessao de usuario
 function criaSessaoUsuario($idusuario,$login,$nome) {
 	session_start();
 	$_SESSION['id']=$idusuario;
@@ -127,14 +128,14 @@ function criaSessaoUsuario($idusuario,$login,$nome) {
 	$_SESSION['nome']=$nome;
 }
 
-//Função de valida uma sessão de usuario
+//Funï¿½ï¿½o de valida uma sessï¿½o de usuario
 function validaSessaoUsuario() {
 	if (!$_SESSION['apelido']) {
 		header('Location:index.php');
 	}
 }
 
-//Função da deslogar usuario
+//Funï¿½ï¿½o da deslogar usuario
 function logout() {
 	session_start();
 	session_destroy();

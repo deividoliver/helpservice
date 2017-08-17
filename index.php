@@ -27,7 +27,7 @@
           <td height="27" colspan="2" align="right"><a href="#">esqueci minha senha</a></td>
           </tr>
           <tr>
-          <td height="27" colspan="2" align="right"><a href="#">Cadastre-se</a></td>
+              <td height="27" colspan="2" align="right"><a href="cadUsuario.php">Cadastre-se</a></td>
           </tr>
         <tr align="center">
           <td height="50" colspan="2"><input type="submit" name="enviar" id="enviar" value="   Logar   " /></td>
