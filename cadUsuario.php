@@ -48,7 +48,7 @@ require_once 'template/header_logar.php';
                                 <td height="27" colspan="2" align="right"><a href="#">esqueci minha senha</a></td>
                             </tr>
                             <tr>
-                                <td height="27" colspan="2" align="right"><a href="/helpservice/index.php">logar-se</a></td>
+                                <td height="27" colspan="2" align="right"><a href="index.php">logar-se</a></td>
                             </tr>
                         </table>
                     </fieldset>

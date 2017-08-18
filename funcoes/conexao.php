@@ -1,17 +1,25 @@
 <?php
 function conectar() {
+        
+//        remoto
+//	$servername = "localhost";
+//	$username = "id2607347_root";
+//	$password = "roothelp";
+//	$dbname = "id2607347_help_service";
 
+//        local
 	$servername = "localhost";
 	$username = "root";
 	$password = "";
 	$dbname = "help_service";
-
-	// Cria conexão com o banco de dados
+        
+        
+	// Cria conexï¿½o com o banco de dados
 	$conn =  mysqli_connect($servername, $username, $password, $dbname);
 
-	// Texta a conexão com o banco de dados
+	// Texta a conexï¿½o com o banco de dados
 	if (!$conn) {
-		return "A conexão com o mysql falhou";
+		return "A conexao com o mysql falhou";
 	}else{
 		return $conn;
 	}

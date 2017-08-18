@@ -20,7 +20,7 @@ function inserirUsuario() {
 		return mensagem('Houve erro ao tentar inserir o novo usu�rio');
 	}
 
-	return mensagem('Usu�rio cadastrado com sucesso!').redirect('admUsuario.php');
+	return mensagem('Usu�rio cadastrado com sucesso!').redirect('index.php');
 }
 
 function getAllUsuario() {
@@ -30,7 +30,7 @@ function getAllUsuario() {
 	$rs = mysqli_query($con, $query);
 
 		if (mysql_num_rows($rs)==0) {
-			return "Nenhum usu�rio cadastrado no sistema";
+			return "Nenhum usuario cadastrado no sistema";
 		}
 
 	// return mysql_fetch_assoc($rs); // retorna um array associativo onde os campos viram as chaves e o registro
@@ -58,13 +58,24 @@ function getAllUsuario() {
 //Seleciona um usuario do sistema.
 function getUsuario() {
 	$con = conectar();
-	$query = "SELECT id, nome, apelido FROM usuarios WHERE idusuario=$_GET[id]";
+	$query = "SELECT id, nome, apelido FROM usuarios WHERE id=$_GET[id]";
 	$rs = mysqli_query($con, $query);
 
 		if (mysqli_num_rows($rs)==0) {
 			return "Nenhum usu�rio cadastrado no sistema";
 		}
-	return mysql_fetch_assoc($rs);
+	return mysqli_fetch_assoc($rs);
+}
+
+function getUsuarioDaSessao() {
+	$con = conectar();
+	$query = "SELECT nome, apelido, email, celular, nascimento, cpf, endereco, numero, complemento, bairro, cidade, estado, saldo FROM usuarios WHERE id=$_SESSION[id]";
+	$rs = mysqli_query($con, $query);
+
+		if (mysqli_num_rows($rs)==0) {
+			return "Nenhum usu�rio cadastrado no sistema";
+		}
+	return mysqli_fetch_assoc($rs);
 }
 
 //Fun��o para edita usuarios
