@@ -1,4 +1,5 @@
 <?php
+
 function conectar() {
         
 //        remoto
@@ -27,6 +28,7 @@ function conectar() {
 	}
 
 }
+
 
 
 
