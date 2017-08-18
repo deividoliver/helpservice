@@ -10,7 +10,7 @@
 <div id='body'>
 <table width="324" border="0" align="center">
   <tr>
-    <td><form action="" method="post" enctype="multipart/form-data" name="cadUsuario" id="cadUsuario">
+    <td><form action="" method="post" enctype="multipart/form-data" id="cadUsuario">
       <fieldset>
       <legend>Logar</legend>
       <table width="316" border="0">
