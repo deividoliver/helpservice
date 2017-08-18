@@ -2,12 +2,14 @@
 function conectar() {
         
 //        remoto
+//        
 //	$servername = "localhost";
 //	$username = "id2607347_root";
 //	$password = "roothelp";
 //	$dbname = "id2607347_help_service";
 
 //        local
+    
 	$servername = "localhost";
 	$username = "root";
 	$password = "";

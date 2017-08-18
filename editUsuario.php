@@ -16,7 +16,7 @@ $resultado = getUsuarioDaSessao();
 </head>
 
 <body>
-    
+   
     <h1>Nome - <?php echo $resultado['nome'];?></h1>
     <h1>Apelido - <?php echo $resultado['apelido'];?></h1>
 </body>
