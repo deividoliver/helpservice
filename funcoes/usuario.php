@@ -79,28 +79,52 @@ function getUsuario() {
 
 function getUsuarioDaSessao() {
     $con = conectar();
-    $query = "SELECT nome, apelido, email, celular, nascimento, cpf, endereco, numero, complemento, bairro, cidade, estado, saldo FROM usuarios WHERE id=$_SESSION[id]";
+    $query = "SELECT id, nome, apelido, email, celular, nascimento, cpf, endereco, numero, complemento, bairro, cidade, estado, saldo FROM usuarios WHERE id=$_SESSION[id]";
     $rs = mysqli_query($con, $query);
 
     if (mysqli_num_rows($rs) == 0) {
         return "Nenhum usu�rio cadastrado no sistema";
     }
     mysqli_close($con);
-    return mysql_fetch_assoc($rs);
+    return mysqli_fetch_assoc($rs);
 }
 
 //Fun��o para edita usuarios
 function editUsuario() {
-    validaSenha('editUsuario.php');
+    //validaSenha('editUsuario.php');
     $con = conectar();
 
+    $id = $_POST['id'];
     $nome = $_POST['nome'];
-    $id = $_GET['id'];
+    $nascimento = convertDataIngles($_POST['nascimento']);
+    $cpf = $_POST['cpf'];
+    $email = $_POST['email'];
+    $celular = $_POST['celular'];
+    $endereco = $_POST['endereco'];
+    $numero = $_POST['numero'];
+    $complemento = $_POST['complemento'];
+    $bairro = $_POST['bairro'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
+    
 
-    $query = "UPDATE usuarios SET  nome='$nome' WHERE id = $id";
+    $query = "UPDATE usuarios SET nome='$nome', nascimento='$nascimento', cpf='$cpf', email='$email', celular='$celular', endereco='$endereco', numero='$numero', complemento='$complemento', bairro='$bairro', cidade='$cidade', estado='$estado' WHERE id = $id";
 
     $rs = mysqli_query($con, $query);
 
+    if ($rs) {
+        mysqli_close($con);
+        return mensagem('Dados atualizados com sucesso').redirect('perfilUsuario.php');
+    } else {
+        
+        if (validaEmail()) {
+            return mensagem("O E-mail já existe");
+        }
+        mysqli_close($con);
+    }
+    return mensagem('Dados não atualizados com sucesso');
+    
+    
     if ($rs === false) {
         if (validaLogin()) {
             mysqli_close($con);
