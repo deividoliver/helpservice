@@ -10,7 +10,8 @@ function inserirUsuario() {
 
     $con = conectar();
     $data = convertDataIngles($_POST['nascimento']);
-    $query = "INSERT INTO usuarios (nome, apelido, email, senha, celular, perfil, nascimento) VALUES ('$_POST[nome]', '$_POST[apelido]', '$_POST[email]', '$_POST[senha]', '$_POST[celular]', 'U', '$data')";
+    $senha = criptografaSenha($_POST['senha']);
+    $query = "INSERT INTO usuarios (nome, apelido, email,  $senha, celular, perfil, nascimento) VALUES ('$_POST[nome]', '$_POST[apelido]', '$_POST[email]', '$_POST[senha]', '$_POST[celular]', 'U', '$data')";
 
     $rs = mysqli_query($con, $query);
 
@@ -29,7 +30,7 @@ function inserirUsuario() {
     return mensagem('Cadastro não realizado com sucesso');
 }
 
-function getAllUsuario() {
+function getAllUsuarios() {
     $con = conectar();
 
     $query = "";
@@ -106,7 +107,7 @@ function editUsuario() {
     $bairro = $_POST['bairro'];
     $cidade = $_POST['cidade'];
     $estado = $_POST['estado'];
-    
+
 
     $query = "UPDATE usuarios SET nome='$nome', nascimento='$nascimento', cpf='$cpf', email='$email', celular='$celular', endereco='$endereco', numero='$numero', complemento='$complemento', bairro='$bairro', cidade='$cidade', estado='$estado' WHERE id = $id";
 
@@ -114,17 +115,17 @@ function editUsuario() {
 
     if ($rs) {
         mysqli_close($con);
-        return mensagem('Dados atualizados com sucesso').redirect('perfilUsuario.php');
+        return mensagem('Dados atualizados com sucesso') . redirect('perfilUsuario.php');
     } else {
-        
+
         if (validaEmail()) {
             return mensagem("O E-mail já existe");
         }
         mysqli_close($con);
     }
     return mensagem('Dados não atualizados com sucesso');
-    
-    
+
+
     if ($rs === false) {
         if (validaLogin()) {
             mysqli_close($con);

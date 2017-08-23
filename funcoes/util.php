@@ -59,3 +59,9 @@ function validaEmail() {
         return false;
     }
 }
+
+function criptografaSenha($senha) {
+    if (!empty($senha)) {
+        return md5($senha);
+    }
+}
