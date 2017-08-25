@@ -11,7 +11,7 @@ function inserirUsuario() {
     $con = conectar();
     $data = convertDataIngles($_POST['nascimento']);
     $senha = criptografaSenha($_POST['senha']);
-    $query = "INSERT INTO usuarios (nome, apelido, email,  $senha, celular, perfil, nascimento) VALUES ('$_POST[nome]', '$_POST[apelido]', '$_POST[email]', '$_POST[senha]', '$_POST[celular]', 'U', '$data')";
+    $query = "INSERT INTO usuarios (nome, apelido, email,  senha, celular, perfil, nascimento) VALUES ('$_POST[nome]', '$_POST[apelido]', '$_POST[email]', '$senha', '$_POST[celular]', 'U', '$data')";
 
     $rs = mysqli_query($con, $query);
 
@@ -35,9 +35,10 @@ function getAllUsuarios() {
 
     $query = "";
     $rs = mysqli_query($con, $query);
-    mysqli_close($con);
+
 
     if (mysql_num_rows($rs) == 0) {
+        mysqli_close($con);
         return "Nenhum usuario cadastrado no sistema";
     }
 
@@ -155,9 +156,9 @@ function delUsuario() {
 //Fun��o para logar usuarios
 function logar() {
     $con = conectar();
-
+    $senha = criptografaSenha($_POST['senha']);
     $query = "SELECT id, apelido, nome, email from usuarios WHERE apelido='$_POST[apelido]' 
-	and senha='$_POST[senha]'";
+	and senha='$senha'";
 
     $rs = mysqli_query($con, $query);
 

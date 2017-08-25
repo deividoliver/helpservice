@@ -25,11 +25,19 @@ function inserirCategoria() {
 
 function getAllCategorias() {
     $con = conectar();
-    $query = "";
+    $resultadoFinal = "";
+
+    $query = "SELECT * FROM categorias ORDER BY nome";
     $rs = mysqli_query($con, $query);
 
-
-    return 0;
+    if (mysqli_num_rows($rs) == 0) {
+        return "Nenhuma categoria cadastrada no sistema";
+    } else {
+        while ($resultado = mysqli_fetch_assoc($rs)) {
+            $resultadoFinal .= "<option value='$resultado[id]'>$resultado[nome]</option>";
+        }
+        return $resultadoFinal;
+    }
 }
 
 function getCategoria() {
