@@ -7,13 +7,13 @@ require_once 'util.php';
 function inserirServico() {
 
     $con = conectar();
-    $cadastro = date('Y-m-d H:i:s');
+    $cadastro = date('Y-m-d H:i:s', time());
     $usuario = $_SESSION['id'];
 
-    $query = "INSERT INTO servicos (nome, descricao, moedas, cadastro, usuario_id, categoria_id)";
-    $query .= "VALUES('$_POST[nome]','$_POST[descricao]', '$_POST[moedas]', $cadastro, $usuario, '$_POST[id]')";
+    $query = "INSERT INTO servicos (nome, descricao, moedas, cadastro, usuario_id, categoria_id) VALUES"
+            . "('$_POST[nome]','$_POST[descricao]', '$_POST[moedas]', '$cadastro', '$usuario','$_POST[categoria]')";
 
-    $rs = mysqli_query($con, $query);
+     $rs = mysqli_query($con, $query);
 
     if ($rs) {
         mysqli_close($con);
