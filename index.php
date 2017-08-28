@@ -1,12 +1,11 @@
 <?php
- 	if ($_POST) {
-		require_once 'funcoes/usuario.php';
-		echo logar();
-	} 
-	require_once 'template/header_logar.php';
-	
+if ($_POST) {
+    require_once 'funcoes/usuario.php';
+    echo logar();
+}
+require_once 'template/header_logar.php';
 ?>
-<div id='logar'>Insira os seus dados para logar</div>
+<!--<div id='logar'>Insira os seus dados para logar</div>
 <div id='body'>
 <table width="324" border="0" align="center">
   <tr>
@@ -38,7 +37,50 @@
     </form>    </td>
   </tr>
 
-</table>
-<?php 
-	require_once 'template/footer.php';
+</table>-->
+<div id="wrapper">
+    <div class="vertical-align-wrap">
+        <div class="vertical-align-middle">
+            <div class="auth-box ">
+                <div class="left">
+                    <div class="content">
+                        <div class="header">
+                            <div class="logo text-center"><img src="assets/img/logo-dark.png" alt="Klorofil Logo"></div>
+                            <p class="lead">Faça login na sua conta</p>
+                        </div>
+                        <form class="form-auth-small" method="post" action="">
+                            <div class="form-group">
+                                <label for="signin-email" class="control-label sr-only">Email</label>
+                                <input type="text" name="apelido" class="form-control" id="signin-email" placeholder="Apelido">
+                            </div>
+                            <div class="form-group">
+                                <label for="signin-password" class="control-label sr-only">Senha</label>
+                                <input type="password" name="senha" class="form-control" id="signin-password" placeholder="Senha">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+                            <div class="bottom">
+                                <span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Recuperar Senha</a></span>
+                            </div>
+                            <div class="bottom">
+                                <span class="helper-text"><i class="fa fa-check"></i> <a href="cadUsuario.php">Cadastro</a></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="overlay"></div>
+                    <div class="content text">
+                        <h1 class="heading">Free Bootstrap dashboard template</h1>
+                        <p>by The Develovers</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END WRAPPER -->
+
+<?php
+require_once 'template/footer.php';
 ?>

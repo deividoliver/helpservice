@@ -45,9 +45,6 @@ require_once 'template/header_logar.php';
                                 <td height="50" colspan="2"><input type="submit" name="cadastrar" id="enviar" value="   Cadastrar   " /></td>
                             </tr>
                             <tr>
-                                <td height="27" colspan="2" align="right"><a href="#">esqueci minha senha</a></td>
-                            </tr>
-                            <tr>
                                 <td height="27" colspan="2" align="right"><a href="index.php">logar-se</a></td>
                             </tr>
                         </table>
