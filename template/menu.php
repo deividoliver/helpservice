@@ -3,6 +3,7 @@
         <ul>
             <li><a href="admUsuario.php">Início</a></li>
             <li><a href="cadServico.php">Serviços</a></li>
+            <li><a href="cadCategoria.php">Categoria</a></li>
         </ul>
     </div>
     <div id="conta">

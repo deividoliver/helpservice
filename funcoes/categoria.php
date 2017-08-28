@@ -9,17 +9,21 @@ function inserirCategoria() {
 
     //TODO tem que verificar o tamanho da string. Não pode ser maior que 100 caracteres
     $descricao = $_POST['descricao'];
+    
+    if (strlen($descricao) > 200 ) {
+         return mensagem('Descrição possui mais de 200 caracteres!');
+    }
 
-    $query = "INSERT INTO categorias (nome, descicao) VALUES('$_POST[nome]',)";
+    $query = "INSERT INTO categorias (nome, descricao) VALUES('$_POST[nome]', '$descricao')";
 
     $rs = mysqli_query($con, $query);
 
     if ($rs) {
         mysqli_close($con);
-        return mensagem('Cadastro de categoria realizado com sucesso');
+        return mensagem('Cadastro de categoria realizado com sucesso!');
     } else {
         mysqli_close($con);
-        return mensagem('Cadastro de categoria não realizado com sucesso');
+        return mensagem('Cadastro de categoria não realizado!');
     }
 }
 
