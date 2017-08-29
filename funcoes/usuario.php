@@ -169,7 +169,7 @@ function logar() {
         $resultado = mysqli_fetch_assoc($rs);
         criaSessaoUsuario($resultado['id'], $resultado['apelido'], $resultado['nome']);
         mysqli_close($con);
-        return mensagem('Bem vindo ao sistema') . redirect('inicio.php');
+        return redirect('inicio.php');
     } else {
         mysqli_close($con);
         return mensagem("Login ou senha errado!") . redirect('index.php');

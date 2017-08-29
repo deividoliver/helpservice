@@ -40,11 +40,11 @@ $categorias = getAllCategorias();
                                     <div class="panel-heading">
                                     </div>
                                     <div class="panel-body">
-                                        <input name="nome" type="text" id="login" size="39" class="form-control"/>
+                                        <input name="nome" placeholder="Nome" type="text" id="login" size="39" class="form-control"/>
                                         <br>
-                                        <input name="moedas" placeholder="Preço" type="number" id="senha" value="5" size="39" min="5" max="1000" step="5" class="form-control"/>
+                                        <input name="moedas" placeholder="Preço" type="number" id="senha"  size="39" min="5" max="1000" step="5" class="form-control"/>
                                         <br>
-                                        <select class="form-control" name="categoria">
+                                        <select class="form-control" name="categoria" required="required">
                                             <?php echo "$categorias"; ?>
                                         </select>
                                         <br>

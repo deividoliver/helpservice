@@ -31,25 +31,20 @@ if ($_POST) {
                                     <h2 class="name">Criar Conta</h2>
                                 </div>
                                 <div class="input-group">
-                                    <input name="nome" type="text" id="nome" size="35" required="true" class="form-control" placeholder="Nome"/>
-                                    <br>
-                                    <input name="apelido" type="text" id="apelido" size="35" required="true" placeholder="Apelido" class="form-control"/>
-                                    <br>
-                                    <input placeholder="Nascimento - dd/mm/aaaa" name="nascimento" type="text" id="nascimento" size="35" required="true" class="form-control"/>
-                                    <br>
-                                    <input name="celular" type="text" id="celular" size="35" required="true" placeholder="Celular" class="form-control"/>
-                                    <br>
-                                    <input name="email" type="text" id="email" size="35" required="true" placeholder="Email" class="form-control"/>
-                                    <br>
-                                    <input name="senha" type="password" id="senha" size="35" required="true" placeholder="Senha" class="form-control"/>
-                                    <br>
-                                    <input name="senha2" type="password" id="senha2" size="35" required="true" placeholder="Redigite sua senha" class="form-control"/>
-                                    <br>
-                                    <span class="input-group-btn"><button type="submit" class="btn btn-success btn-block" name="cadastrar" id="enviar" title="Cadastrar"><i class="fa fa-arrow-right"></i></button></span>
+                                    <input name="nome" type="text" id="nome"  required="true" class="form-control" placeholder="Nome"/>
+                                    <input name="apelido" type="text" id="apelido"  required="true" placeholder="Apelido" class="form-control"/>
+                                    <input placeholder="Nascimento - dd/mm/aaaa" name="nascimento" type="text" id="nascimento"  required="true" class="form-control"/>
+                                    <input name="celular" type="text" id="celular"  required="true" placeholder="Celular" class="form-control"/>
+                                    <input name="email" type="email" id="email"  required="true" placeholder="Email" class="form-control"/>
+                                    <input name="senha" type="password" id="senha"  required="true" placeholder="Senha" class="form-control"/>
+                                    <input name="senha2" type="password" id="senha2"  required="true" placeholder="Redigite sua senha" class="form-control"/>
                                 </div>
-                                <br>
+
                                 <div class="bottom">
-                                    <span class="helper-text"><i class="lnr lnr-user"></i> <a href="index.php">Logar</a></span>
+                                    <span class="input-group-btn"><button type="submit" class="btn btn-success btn-block" name="cadastrar" id="enviar" title="Cadastrar">Cadastrar</span>
+                                </div>
+                                <div class="bottom text-center">
+                                    <span class="helper-text"><a href="index.php">Voltar</a></span>
                                 </div>
                             </form>
                         </div>
