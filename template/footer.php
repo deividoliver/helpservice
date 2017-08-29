@@ -1,5 +1,7 @@
-<!--</div>
-<div id="footer">&copy; copyright <?php // echo date("Y")?></div>
--->
-</body>
-</html>
+<div class="clearfix">
+    <footer>
+        <div class="container-fluid">
+            <p class="copyright">&copy; 2017 <a href="https://www.themeineed.com" target="_blank">Theme I Need</a>. All Rights Reserved.</p>
+        </div>
+    </footer>
+</div>

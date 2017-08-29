@@ -116,7 +116,7 @@ function editUsuario() {
 
     if ($rs) {
         mysqli_close($con);
-        return mensagem('Dados atualizados com sucesso') . redirect('perfilUsuario.php');
+        return mensagem('Dados atualizados com sucesso').redirect('editUsuario.php');
     } else {
 
         if (validaEmail()) {
@@ -169,7 +169,7 @@ function logar() {
         $resultado = mysqli_fetch_assoc($rs);
         criaSessaoUsuario($resultado['id'], $resultado['apelido'], $resultado['nome']);
         mysqli_close($con);
-        return mensagem('Bem vindo ao sistema') . redirect('admUsuario.php');
+        return mensagem('Bem vindo ao sistema') . redirect('inicio.php');
     } else {
         mysqli_close($con);
         return mensagem("Login ou senha errado!") . redirect('index.php');

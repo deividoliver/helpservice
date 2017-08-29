@@ -1,6 +1,5 @@
 <?php
 require_once 'template/header.php';
-require_once 'template/menu.php';
 require_once 'funcoes/categoria.php';
 require_once 'funcoes/util.php';
 if ($_POST) {
@@ -10,7 +9,68 @@ if ($_POST) {
 }
 ?>
 
-<div id='body'>
+
+<!doctype html>
+<html lang="pt-BR">
+
+    <head>
+        <title>Cadastrar Categoria</title>
+        <?php
+        require_once 'template/head.php';
+        ?>
+    </head>
+
+    <body>
+        <!-- WRAPPER -->
+        <div id="wrapper">
+            <!-- MAIN -->
+            <?php
+            require_once 'template/nav_bar.php';
+            require_once 'template/menu.php';
+            ?>
+
+            <div class="main">
+                <form action="" method="post" enctype="multipart/form-data" id="cadUsuario">
+                    <!-- MAIN CONTENT -->
+                    <div class="main-content">
+                        <div class="container-fluid">
+                            <h3 class="page-title">Cadastrar Categoria</h3>
+                            <div class="panel panel-profile">
+                                <div class="clearfix">
+                                    <!-- INPUTS -->
+                                    <div class="panel-heading">
+                                    </div>
+                                    <div class="panel-body">
+                                        <input placeholder="Nome" name="nome" type="text" required="true" id="nome" maxlength="50" size="49" class="form-control" />
+                                        <br>
+                                        <textarea  rows="5" maxlength="200" size="48" cols="50" placeholder="Descrição da categoria" name="descricao" id="descricao" class="form-control"></textarea>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary btn-block" name="cadastrar" id="enviar">Cadastrar</button>
+                                    </div>
+                                    <!-- END INPUTS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END MAIN CONTENT -->
+                </form>
+            </div>
+            <!-- END MAIN -->
+            <?php
+            require_once 'template/footer.php';
+            ?>
+            <!-- END WRAPPER -->
+            <!-- Javascript -->
+            <?php
+            require_once 'template/scripts.php';
+            ?>
+        </div>
+    </body>
+
+</html>
+
+
+<!--<div id='body'>
     <table width="324" border="0" align="center">
         <tr>
             <td><form action="" method="post" enctype="multipart/form-data" id="cadUsuario">
@@ -34,7 +94,4 @@ if ($_POST) {
                 </form>    </td>
         </tr>
 
-    </table>
-    <?php
-    require_once 'template/footer.php';
-    ?>
+    </table>-->

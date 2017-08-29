@@ -1,17 +1,24 @@
-<div id="menu">
-    <div id="lista_menu">
-        <ul>
-            <li><a href="admUsuario.php">Início</a></li>
-            <li><a href="cadServico.php">Serviços</a></li>
-            <li><a href="cadCategoria.php">Categoria</a></li>
-        </ul>
-    </div>
-    <div id="conta">
-        <?php echo $_SESSION['apelido'] ?>
-        |
-        <a href="editUsuario.php" style="color : #FFF">Editar</a>
-        |
-        <a href="logout.php" style="color : #FFF">Sair</a>
+<!-- LEFT SIDEBAR -->
+<div id="sidebar-nav" class="sidebar">
+    <div class="sidebar-scroll">
+        <nav>
+            <ul class="nav">
+                <li><a href="inicio.php" class=""><i class="lnr lnr-home"></i> <span>Início</span></a></li>
+                <li><a href="cadServico.php" class=""><i class="lnr lnr-pushpin"></i> <span>Serviços</span></a></li>
+                <li><a href="cadCategoria.php" class=""><i class="lnr lnr-tag"></i> <span>Categorias</span></a></li>
+                <!--                <li>
+                                    <a href="#subPages" data-toggle="collapse" class="active"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                                    <div id="subPages" class="collapse in">
+                                        <ul class="nav">
+                                            <li><a href="page-profile.html" class="active">Profile</a></li>
+                                            <li><a href="page-login.html" class="">Login</a></li>
+                                            <li><a href="page-lockscreen.html" class="">Lockscreen</a></li>
+                                        </ul>
+                                    </div>
+                                </li>-->
+            </ul>
+        </nav>
     </div>
 </div>
-<div id="body">
+<!-- END LEFT SIDEBAR -->
+
