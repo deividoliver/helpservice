@@ -8,7 +8,7 @@ if ($_POST) {
 <html lang="pt-BR" class="fullscreen-bg">
 
     <head>
-        <title>Criar conta</title>
+        <title>Login</title>
         <?php
         require_once 'template/head.php';
         ?>
