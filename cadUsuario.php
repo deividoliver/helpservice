@@ -39,9 +39,8 @@ if ($_POST) {
                                     <input name="senha" type="password" id="senha"  required="true" placeholder="Senha" class="form-control"/>
                                     <input name="senha2" type="password" id="senha2"  required="true" placeholder="Redigite sua senha" class="form-control"/>
                                 </div>
-
-                                <div class="bottom">
-                                    <span class="input-group-btn"><button type="submit" class="btn btn-success btn-block" name="cadastrar" id="enviar" title="Cadastrar">Cadastrar</span>
+                                <div class="bottom margin-top-10">
+                                    <span class="input-group-btn"><button type="submit" class="btn btn-primary btn-block" name="cadastrar" id="enviar" title="Cadastrar">Cadastrar</span>
                                 </div>
                                 <div class="bottom text-center">
                                     <span class="helper-text"><a href="index.php">Voltar</a></span>
