@@ -1,5 +1,7 @@
 <?php
 require_once 'template/header.php';
+require_once 'funcoes/usuario.php';
+$resultado = getUsuarioDaSessao();
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -34,10 +36,10 @@ require_once 'template/header.php';
                                     <div class="row">
                                         <div class="col-md-3">
                                             <div class="metric">
-                                                <span class="icon"><i class="fa fa-download"></i></span>
+                                                <span class="icon"><i class="fa fa-money"></i></span>
                                                 <p>
-                                                    <span class="number">1,252</span>
-                                                    <span class="title">Downloads</span>
+                                                    <span class="number"><?php echo $resultado['saldo']?></span>
+                                                    <span class="title">Saldo</span>
                                                 </p>
                                             </div>
                                         </div>
