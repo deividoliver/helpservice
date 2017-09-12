@@ -29,6 +29,16 @@ function convertDataHoraPortugues($data) {
     return substr($data, 8, 2) . '/' . substr($data, 5, 2) . '/' . substr($data, 0, 4) . "  " . substr($data, 11);
 }
 
+function formatCelular($celular) {
+    if (strlen($celular) == 11) {
+        $novo = substr_replace($celular, '(', 0, 0);
+        $novo = substr_replace($novo, ')', 3, 0);
+        return $novo;
+    } else {
+        return $celular;
+    }
+}
+
 // fun��o que verifica se as senhas s�o iguais
 function validaSenha($pagina) {
     if ($_POST['senha'] != $_POST['senha2']) {
