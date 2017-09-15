@@ -18,7 +18,7 @@ $servivos = getAllServicos($limete, $offset);
 <html lang="pt-BR">
 
     <head>
-        <title>Cadastrar Serviço</title>
+        <title>Listar Serviços</title>
         <?php
         require_once 'template/head.php';
         ?>
