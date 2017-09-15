@@ -13,7 +13,7 @@ function inserirServico() {
     $query = "INSERT INTO servicos (nome, descricao, moedas, cadastro, usuario_id, categoria_id) VALUES"
             . "('$_POST[nome]','$_POST[descricao]', '$_POST[moedas]', '$cadastro', '$usuario','$_POST[categoria]')";
 
-     $rs = mysqli_query($con, $query);
+    $rs = mysqli_query($con, $query);
 
     if ($rs) {
         mysqli_close($con);
@@ -24,20 +24,38 @@ function inserirServico() {
     }
 }
 
-function getAllServicos() {
+function getAllServicos($limite, $offset) {
     $con = conectar();
-    $query = "";
+    $query = "select * from servicos limit $limite offset $offset;";
     $rs = mysqli_query($con, $query);
 
+    mysqli_close($con);
+    
+    return $rs;
+}
 
-    return 0;
+function servicosQtd() {
+    $con = conectar();
+    $query = "select * from servicos";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    return mysqli_num_rows($rs);
 }
 
 function getServico() {
     $con = conectar();
-    $query = "";
-    return 0;
-}
+    $query = "select * from servicos where servicos.id = '$_GET[id]'";
+
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    if (mysqli_affected_rows($rs) === 0) {
+        return "Seviço não encontradado";
+    }
+
+    return mysqli_fetch_assoc($rs);
+    }
 
 function editServico() {
     return 0;

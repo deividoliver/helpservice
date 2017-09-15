@@ -4,7 +4,15 @@
         <nav>
             <ul class="nav">
                 <li><a href="inicio.php" class=""><i class="lnr lnr-home"></i> <span>Início</span></a></li>
-                <li><a href="cadServico.php" class=""><i class="lnr lnr-pushpin"></i> <span>Serviços</span></a></li>
+                <li>
+                    <a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-pushpin"></i> <span>Serviços</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                    <div id="subPages" class="collapse ">
+                        <ul class="nav">
+                            <li><a href="cadServico.php" class=""><i class="lnr lnr-pushpin"></i> <span>Cadastrar</span></a></li>
+                            <li><a href="allServicos.php?pg=1" class=""><i class="lnr lnr-pushpin"></i> <span>Ver Serviços</span></a></li>
+                        </ul>
+                    </div>
+                </li>
                 <li><a href="cadCategoria.php" class=""><i class="lnr lnr-tag"></i> <span>Categorias</span></a></li>
                 <!--                <li>
                                     <a href="#subPages" data-toggle="collapse" class="active"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>

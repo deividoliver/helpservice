@@ -72,10 +72,10 @@ function getUsuario() {
     $query = "SELECT id, nome, apelido FROM usuarios WHERE id=$_GET[id]";
     $rs = mysqli_query($con, $query);
 
+    mysqli_close($con);
     if (mysqli_num_rows($rs) == 0) {
         return "Nenhum usu�rio cadastrado no sistema";
     }
-    mysqli_close($con);
     return mysqli_fetch_assoc($rs);
 }
 
