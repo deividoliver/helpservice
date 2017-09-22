@@ -34,6 +34,31 @@ function getAllServicos($limite, $offset) {
     return $rs;
 }
 
+function getAllServicosDoUsuario($limite, $offset) {
+    $con = conectar();
+    $id = $_SESSION['id'];
+    $query = "select * from servicos where servicos.usuario_id = $id limit $limite offset $offset;";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    
+    return $rs;
+}
+
+function getAllServicosContratados($limite, $offset) {
+    $con = conectar();
+    $id = $_SESSION['id'];
+    $query = "select * from servicos where servicos.usuario_id = $id limit $limite offset $offset;";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    
+    return $rs;
+}
+
+
+
+
 function servicosQtd() {
     $con = conectar();
     $query = "select * from servicos";
