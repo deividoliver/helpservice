@@ -11,7 +11,7 @@ function inserirUsuario() {
     $con = conectar();
     $data = convertDataIngles($_POST['nascimento']);
     $senha = criptografaSenha($_POST['senha']);
-    $query = "INSERT INTO usuarios (nome, apelido, email,  senha, celular, perfil, nascimento) VALUES ('$_POST[nome]', '$_POST[apelido]', '$_POST[email]', '$senha', '$_POST[celular]', 'U', '$data')";
+    $query = "INSERT INTO usuarios (nome, apelido, email,  senha, celular, perfil, nascimento, saldo) VALUES ('$_POST[nome]', '$_POST[apelido]', '$_POST[email]', '$senha', '$_POST[celular]', 'U', '$data', 25)";
 
     $rs = mysqli_query($con, $query);
 
@@ -70,6 +70,18 @@ function getAllUsuarios() {
 function getUsuario() {
     $con = conectar();
     $query = "SELECT id, nome, apelido FROM usuarios WHERE id=$_GET[id]";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    if (mysqli_num_rows($rs) == 0) {
+        return "Nenhum usu�rio cadastrado no sistema";
+    }
+    return mysqli_fetch_assoc($rs);
+}
+
+function obterUsuarioPeloSistema($parametro) {
+    $con = conectar();
+    $query = "SELECT id, nome, apelido FROM usuarios WHERE id=$parametro";
     $rs = mysqli_query($con, $query);
 
     mysqli_close($con);
@@ -169,7 +181,7 @@ function logar() {
         $resultado = mysqli_fetch_assoc($rs);
         criaSessaoUsuario($resultado['id'], $resultado['apelido'], $resultado['nome']);
         mysqli_close($con);
-        return mensagem('Bem vindo ao sistema') . redirect('inicio.php');
+        return redirect('inicio.php');
     } else {
         mysqli_close($con);
         return mensagem("Login ou senha errado!") . redirect('index.php');

@@ -4,15 +4,16 @@ require_once 'funcoes/categoria.php';
 require_once 'funcoes/util.php';
 require_once 'funcoes/servico.php';
 
+$pagina = null;
 $pagina = $_GET['pg'];
-$limete = 5;
+$limite = 5;
 $totalResultados = servicosQtd();
-$totalpaginas = $totalResultados / $limete;
+$totalpaginas = $totalResultados['qtd'] / $limite;
 
-$offset = $limete * ($pagina - 1);
+$offset = $limite * ($pagina - 1);
 
 
-$servivos = getAllServicos($limete, $offset);
+$servivos = getAllServicos($limite, $offset);
 ?>
 <!doctype html>
 <html lang="pt-BR">

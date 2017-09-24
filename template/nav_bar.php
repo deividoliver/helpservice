@@ -1,3 +1,4 @@
+
 <!-- NAVBAR -->
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="brand">
@@ -7,6 +8,12 @@
         <div class="navbar-btn">
             <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
         </div>
+        <form class="navbar-form navbar-left" method="post" action="pesquisa_servicos.php?pg=1">
+            <div class="input-group">
+                <input type="text" name="pesquisa" class="form-control" placeholder="Procurar Serviços...">
+                <span class="input-group-btn"><button type="submit" class="btn btn-primary btn-block" name="cadastrar" id="enviar">Pesquisar</button></span>
+            </div>
+        </form>
 
         <div id="navbar-menu">
             <ul class="nav navbar-nav navbar-right">
