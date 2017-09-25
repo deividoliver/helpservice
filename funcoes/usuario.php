@@ -79,6 +79,18 @@ function getUsuario() {
     return mysqli_fetch_assoc($rs);
 }
 
+function getUsuarioDoServico($id) {
+    $con = conectar();
+    $query = "SELECT * FROM usuarios WHERE usuarios.id = $id";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    if (mysqli_num_rows($rs) == 0) {
+        return "Nenhum usuário encontrado!";
+    }
+    return mysqli_fetch_assoc($rs);
+}   
+
 function obterUsuarioPeloSistema($parametro) {
     $con = conectar();
     $query = "SELECT id, nome, apelido FROM usuarios WHERE id=$parametro";

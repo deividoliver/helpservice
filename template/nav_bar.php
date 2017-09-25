@@ -8,10 +8,11 @@
         <div class="navbar-btn">
             <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
         </div>
-        <form class="navbar-form navbar-left" method="post" action="pesquisa_servicos.php?pg=1">
+        <form class="navbar-form navbar-left" method="get" action="pesquisa_servicos.php">
             <div class="input-group">
                 <input type="text" name="pesquisa" class="form-control" placeholder="Procurar Serviços...">
-                <span class="input-group-btn"><button type="submit" class="btn btn-primary btn-block" name="cadastrar" id="enviar">Pesquisar</button></span>
+                <input type="hidden" name="pg" value="1">
+                <span class="input-group-btn"><button type="submit" class="btn btn-primary btn-block" id="enviar">Pesquisar</button></span>
             </div>
         </form>
 
@@ -20,16 +21,16 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown">
                         <i class="lnr lnr-alarm"></i>
-                        <span class="badge bg-danger">5</span>
+                        <!--<span class="badge bg-danger">5</span>-->
                     </a>
-                    <ul class="dropdown-menu notifications">
+<!--                    <ul class="dropdown-menu notifications">
                         <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>System space is almost full</a></li>
                         <li><a href="#" class="notification-item"><span class="dot bg-danger"></span>You have 9 unfinished tasks</a></li>
                         <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Monthly report is available</a></li>
                         <li><a href="#" class="notification-item"><span class="dot bg-warning"></span>Weekly meeting in 1 hour</a></li>
                         <li><a href="#" class="notification-item"><span class="dot bg-success"></span>Your request has been approved</a></li>
                         <li><a href="#" class="more">See all notifications</a></li>
-                    </ul>
+                    </ul>-->
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="assets/img/user.png" class="img-circle" alt="Avatar"> <span><?php echo $_SESSION['nome'] ?></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>

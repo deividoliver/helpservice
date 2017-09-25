@@ -3,11 +3,12 @@ require_once 'template/header.php';
 require_once 'funcoes/usuario.php';
 $resultado = getUsuarioDaSessao();
 $resposta = null;
-if ($_POST) {
+
+if ($_GET) {
     require_once 'funcoes/servico.php';
 
     $pagina = $_GET['pg'];
-    $limite = 1;
+    $limite = 10;
     $totalResultados = servicosPesquisaQtd();
     $totalpaginas = $totalResultados['qtd'] / $limite;
 
@@ -15,7 +16,6 @@ if ($_POST) {
 
     $resposta = pesquisarServico($limite, $offset);
 
-//    $servivos = getAllServicos($limete, $offset);
 }
 ?>
 
@@ -57,6 +57,63 @@ if ($_POST) {
                                         ?>
                                     </div>
                                     <!--CONTEÚDO DE BUSCA FIM-->
+                                    
+                                    <nav aria-label="...">
+                                            <ul class="pagination">
+                                                <?php
+                                                $proximo = $pagina + 1;
+                                                $anterior = $pagina - 1;
+                                                $cont = 1;
+
+
+                                                if ($pagina <= 1) {
+                                                    echo'<li class="page-item disabled">
+                                                    <span class="page-link">Anterior</span>
+                                                </li>';
+                                                } else {
+                                                    echo '<li class="page-item">';
+                                                    echo '<a class="page-link" href="pesquisa_servicos.php?pg=';
+                                                    echo "$anterior";
+                                                    echo "&pesquisa=$_GET[pesquisa]";
+                                                    echo '">Anterior</a></li>';
+                                                }
+
+                                                while ($cont <= $totalpaginas) {
+                                                    $paginaComp = $cont;
+
+                                                    if ($pagina == $paginaComp) {
+                                                        echo '<li class = "page-item active">';
+                                                        echo '<span class = "page-link">';
+                                                        echo "$paginaComp";
+                                                        echo '<span class = "sr-only">(current)</span>';
+                                                        echo '</span>';
+                                                        echo '</li>';
+                                                    } else {
+                                                        echo '<li class = "page-item"><a class = "page-link" href = "pesquisa_servicos.php?pg=';
+                                                        echo "$paginaComp";
+                                                        echo "&pesquisa=$_GET[pesquisa]";
+                                                        echo '">';
+                                                        echo "$paginaComp";
+                                                        echo '</a></li>';
+                                                    }
+                                                    $cont++;
+                                                }
+
+
+                                                if ($pagina >= $totalpaginas) {
+                                                    echo'<li class="page-item disabled">
+                                                    <span class="page-link">Próximo</span>
+                                                </li>';
+                                                } else {
+                                                    echo '<li class="page-item">';
+                                                    echo '<a class="page-link" href="pesquisa_servicos.php?pg=';
+                                                    echo "$proximo";
+                                                    echo "&pesquisa=$_GET[pesquisa]";
+                                                    echo '">Próximo</a></li>';
+                                                }
+                                                ?>
+                                            </ul>
+                                        </nav>
                                 </div>
                             </div>
 
