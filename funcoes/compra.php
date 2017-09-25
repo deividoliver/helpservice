@@ -21,7 +21,9 @@ function inserirCompra() {
         return mensagem('Você não tem permissão para fazer compras') . redirect('index.php');
     }
 
-    $query1 = "INSERT INTO compras (id, cadastro, moedas, valor_total, usuario_id, cotacao_id) VALUES (null, now(), $qtd, $valor, $user[id],  $cotacao[id])";
+    $query1 = "INSERT INTO compras (id, cadastro, moedas, status, valor_total, usuario_id, cotacao_id) VALUES (null, now(), $qtd, A"
+            . ""
+            . ", $valor, $user[id],  $cotacao[id])";
     $query2 = "UPDATE usuarios SET saldo='$novoSaldo' WHERE id = $user[id]";
 
     $conexao = conectar();
@@ -78,3 +80,5 @@ function getAllComprasLimit($limite, $offset) {
 
     return $rs;
 }
+
+?>
