@@ -13,6 +13,17 @@
                         </ul>
                     </div>
                 </li>
+                
+                <li>
+                    <a href="#subPages1" data-toggle="collapse" class="collapsed"><i class="lnr lnr-pushpin"></i> <span>Compras</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+                    <div id="subPages1" class="collapse ">
+                        <ul class="nav">
+                            <li><a href="compra.php" class=""><i class="lnr lnr-pushpin"></i> <span>Comprar Moedas</span></a></li>
+                            <li><a href="allComprasUsuario.php?pg=1" class=""><i class="lnr lnr-pushpin"></i> <span>Listar Compras</span></a></li>
+                        </ul>
+                    </div>
+                </li>
+                
                 <li><a href="cadCategoria.php" class=""><i class="lnr lnr-tag"></i> <span>Categorias</span></a></li>
                 <!--                <li>
                                     <a href="#subPages" data-toggle="collapse" class="active"><i class="lnr lnr-file-empty"></i> <span>Pages</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>

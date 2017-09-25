@@ -11,7 +11,8 @@ function inserirUsuario() {
     $con = conectar();
     $data = convertDataIngles($_POST['nascimento']);
     $senha = criptografaSenha($_POST['senha']);
-    $query = "INSERT INTO usuarios (nome, apelido, email,  senha, celular, perfil, nascimento, saldo) VALUES ('$_POST[nome]', '$_POST[apelido]', '$_POST[email]', '$senha', '$_POST[celular]', 'U', '$data', 25)";
+    $celular = limpaCelular($_POST['celular']);
+    $query = "INSERT INTO usuarios (nome, apelido, email,  senha, celular, perfil, nascimento, saldo) VALUES ('$_POST[nome]', '$_POST[apelido]', '$_POST[email]', '$senha', '$celular', 'U', '$data', 25)";
 
     $rs = mysqli_query($con, $query);
 
@@ -220,4 +221,13 @@ function logout() {
     session_start();
     session_destroy();
     header('Location:index.php');
+}
+
+function limpaCelular($celular) {
+    $celular = trim($celular);
+    $celular = str_replace("(", "", $celular);
+    $celular = str_replace(")", "", $celular);
+    $celular = str_replace("-", "", $celular);
+    $celular = str_replace(" ", "", $celular);
+    return $celular;
 }
