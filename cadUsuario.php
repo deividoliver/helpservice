@@ -10,6 +10,7 @@ if ($_POST) {
 <html lang="pt-BR" class="fullscreen-bg">
 
     <head>
+        <script src="assets/scripts/mascaras.js" type="text/javascript"></script>
         <title>Criar conta</title>
         <?php
         require_once 'template/head.php';
@@ -33,8 +34,8 @@ if ($_POST) {
                                 <div class="input-group">
                                     <input name="nome" type="text" id="nome"  required="true" class="form-control" placeholder="Nome"/>
                                     <input name="apelido" type="text" id="apelido"  required="true" placeholder="Apelido" class="form-control"/>
-                                    <input placeholder="Nascimento - dd/mm/aaaa" name="nascimento" type="text" id="nascimento"  required="true" class="form-control"/>
-                                    <input name="celular" type="text" id="celular"  required="true" placeholder="Celular" class="form-control"/>
+                                    <input placeholder="Nascimento - dd/mm/aaaa" name="nascimento" type="text" id="nascimento"  required="true" class="form-control" maxlength="10" onkeypress="mascaraData(this, event)"/>
+                                    <input name="celular" type="text" id="celular"  required="true" onkeypress="return mask(event, this, '(##) # ####-####')" maxlength="16" placeholder=" (DDD) 0000-0000" class="form-control"/>
                                     <input name="email" type="email" id="email"  required="true" placeholder="Email" class="form-control"/>
                                     <input name="senha" type="password" id="senha"  required="true" placeholder="Senha" class="form-control"/>
                                     <input name="senha2" type="password" id="senha2"  required="true" placeholder="Redigite sua senha" class="form-control"/>
