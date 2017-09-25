@@ -59,6 +59,17 @@ function comprasQtd() {
 }
 
 function getAllComprasUsuarioLimit($limite, $offset) {
+    $user = getUsuarioDaSessao();
+    $con = conectar();
+    $query = "select * from compras where usuario_id = $user[id] order by cadastro desc limit $limite offset $offset;";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+
+    return $rs;
+}
+
+function getAllComprasLimit($limite, $offset) {
     $con = conectar();
     $query = "select * from compras order by cadastro desc limit $limite offset $offset;";
     $rs = mysqli_query($con, $query);
