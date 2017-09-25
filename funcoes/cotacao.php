@@ -12,7 +12,7 @@ function inserirCotacao() {
 
     if ($rs) {
         mysqli_close($con);
-        return mensagem('Cadastro realizado com sucesso') . redirect('index.php');
+        return mensagem('Cadastro realizado com sucesso') . redirect('inicio.php');
     } 
     mysqli_close($con);
     return mensagem('Falha ao tentar cadastrar cotação');
@@ -52,6 +52,37 @@ function getAllCotacoes() {
 
 
     return $resultadoFinal;
+}
+
+function cotacoesQtd() {
+    $con = conectar();
+    $query = "select * from cotacoes";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    return mysqli_num_rows($rs);
+}
+
+function getAllCotacoesLimit($limite, $offset) {
+    $con = conectar();
+    $query = "select * from cotacoes order by cadastro desc limit $limite offset $offset;";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    
+    return $rs;
+}
+
+function getUltimaCotacao() {
+    $con = conectar();
+    $query = "SELECT * FROM cotacoes c order by c.cadastro DESC LIMIT 1";
+    $rs = mysqli_query($con, $query);
+
+    if (mysqli_num_rows($rs) == 0) {
+        return "Nenhuma cotacao cadastrada no sistema";
+    }
+    mysqli_close($con);
+    return mysqli_fetch_assoc($rs);
 }
 
 function getCotacao() {
