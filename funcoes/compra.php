@@ -18,7 +18,7 @@ function inserirCompra() {
     }
 
     if ($_GET['id']  == null || $_GET['id'] != $user[id]) {
-        return mensagem('Você não tem permissão para fazer compras') . redirect('inicio.php');
+        return mensagem('Você não tem permissão para fazer compras') . redirect('index.php');
     }
 
     $query1 = "INSERT INTO compras (id, cadastro, moedas, valor_total, usuario_id, cotacao_id) VALUES (null, now(), $qtd, $valor, $user[id],  $cotacao[id])";
@@ -37,7 +37,7 @@ function inserirCompra() {
     if ($erro == 0) {
         if (mysqli_commit($conexao)) {
             mysqli_close($conexao);
-            return mensagem('Compra realizada com sucesso') . redirect('compra.php');
+            return mensagem('Compra realizada com sucesso') . redirect('allComprasUsuario.php?pg=1');
         } else {
             mysqli_close($conexao);
             return mensagem('Falha ao tentar comprar moedas');
