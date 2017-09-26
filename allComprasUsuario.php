@@ -5,13 +5,13 @@ require_once 'funcoes/compra.php';
 
 $pagina = $_GET['pg'];
 $limete = 5;
-$totalResultados = comprasQtd();
+$totalResultados = comprasAprovadaUsuarioQtd();
 $totalpaginas = $totalResultados / $limete;
 
 $offset = $limete * ($pagina - 1);
 
 
-$servivos = getAllComprasUsuarioLimit($limete, $offset);
+$servivos = getAllComprasAprovadasUsuarioLimit($limete, $offset);
 ?>
 <!doctype html>
 <html lang="pt-BR">

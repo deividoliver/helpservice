@@ -182,7 +182,7 @@ function delUsuario() {
 function logar() {
     $con = conectar();
     $senha = criptografaSenha($_POST['senha']);
-    $query = "SELECT id, apelido, nome, email from usuarios WHERE apelido='$_POST[apelido]' 
+    $query = "SELECT id, apelido, nome, email, perfil from usuarios WHERE apelido='$_POST[apelido]' 
 	and senha='$senha'";
 
     $rs = mysqli_query($con, $query);
@@ -192,7 +192,7 @@ function logar() {
     }
     if (mysqli_num_rows($rs) == 1) {
         $resultado = mysqli_fetch_assoc($rs);
-        criaSessaoUsuario($resultado['id'], $resultado['apelido'], $resultado['nome']);
+        criaSessaoUsuario($resultado['id'], $resultado['apelido'], $resultado['nome'], $resultado['perfil']);
         mysqli_close($con);
         return redirect('inicio.php');
     } else {
@@ -202,11 +202,12 @@ function logar() {
 }
 
 //Funçãoo para criar uma sessao de usuario
-function criaSessaoUsuario($idusuario, $login, $nome) {
+function criaSessaoUsuario($idusuario, $login, $nome, $perfil) {
     session_start();
     $_SESSION['id'] = $idusuario;
     $_SESSION['apelido'] = $login;
     $_SESSION['nome'] = $nome;
+    $_SESSION['perfil'] = $perfil;
 }
 
 //Fun��o de valida uma sess�o de usuario
@@ -259,4 +260,18 @@ function getServicosConcluidos($id) {
 
     mysqli_close($con);
     return mysqli_fetch_assoc($rs);
+}
+
+function esconderDoUsuario(){
+    if ($_SESSION['perfil'] == 'U') {
+        return "hidden";
+    }
+    return "";
+}
+
+function esconderDoAdm(){
+    if ($_SESSION['perfil'] == 'A') {
+        return "hidden";
+    }
+    return "";
 }

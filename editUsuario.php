@@ -34,11 +34,11 @@ if ($_POST) {
                         <div class="container-fluid">
 
                             <!--componentes klorofil inicio-->
-                            <div class="panel panel-profile">
+<!--                            <div class="panel panel-profile">
                                 <div class="clearfix">
-                                    <!-- LEFT COLUMN -->
+                                     LEFT COLUMN 
                                     <div class="profile-left">
-                                        <!-- PROFILE HEADER -->
+                                         PROFILE HEADER 
                                         <div class="profile-header">
                                             <div class="overlay"></div>
                                             <div class="profile-main">
@@ -60,8 +60,8 @@ if ($_POST) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- END PROFILE HEADER -->
-                                        <!-- PROFILE DETAIL -->
+                                         END PROFILE HEADER 
+                                         PROFILE DETAIL 
                                         <div class="profile-detail">
                                             <div class="profile-info">
                                                 <h4 class="heading">Basic Info</h4>
@@ -69,7 +69,7 @@ if ($_POST) {
                                                     <li>Aniversário <span><?php echo convertDataPortugues($resultado['nascimento']); ?></span></li>
                                                     <li>Celular <span><?php echo formatCelular($resultado['celular']); ?></span></li>
                                                     <li>Email <span><?php echo $resultado['email']; ?></span></li>
-                                                    <!--<li>Website <span><a href="https://www.themeineed.com">www.themeineed.com</a></span></li>-->
+                                                    <li>Website <span><a href="https://www.themeineed.com">www.themeineed.com</a></span></li>
                                                 </ul>
                                             </div>
                                             <div class="profile-info">
@@ -87,13 +87,13 @@ if ($_POST) {
                                             </div>
                                             <div class="text-center"><a href="#" class="btn btn-primary">Edit Profile</a></div>
                                         </div>
-                                        <!-- END PROFILE DETAIL -->
+                                         END PROFILE DETAIL 
                                     </div>
-                                    <!-- END LEFT COLUMN -->
-                                    <!-- RIGHT COLUMN -->
+                                     END LEFT COLUMN 
+                                     RIGHT COLUMN 
                                     <div class="profile-right">
                                         <h4 class="heading">Samuel's Awards</h4>
-                                        <!-- AWARDS -->
+                                         AWARDS 
                                         <div class="awards">
                                             <div class="row">
                                                 <div class="col-md-3 col-sm-6">
@@ -131,8 +131,8 @@ if ($_POST) {
                                             </div>
                                             <div class="text-center"><a href="#" class="btn btn-default">See all awards</a></div>
                                         </div>
-                                        <!-- END AWARDS -->
-                                        <!-- TABBED CONTENT -->
+                                         END AWARDS 
+                                         TABBED CONTENT 
                                         <div class="custom-tabs-line tabs-line-bottom left-aligned">
                                             <ul class="nav" role="tablist">
                                                 <li class="active"><a href="#tab-bottom-left1" role="tab" data-toggle="tab">Recent Activity</a></li>
@@ -250,11 +250,11 @@ if ($_POST) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- END TABBED CONTENT -->
+                                         END TABBED CONTENT 
                                     </div>
-                                    <!-- END RIGHT COLUMN -->
+                                     END RIGHT COLUMN 
                                 </div>
-                            </div>
+                            </div>-->
 
                             <!--componentes klorofil fim-->
 
@@ -273,7 +273,7 @@ if ($_POST) {
                                         <br>
                                         <input maxlength="10" value="<?php echo convertDataPortugues($resultado['nascimento']); ?>" placeholder="dd/mm/aaaa" name="nascimento" type="text" id="nascimento" size="35" required="true" class="form-control"/>
                                         <br>
-                                        <input maxlength="11" value="<?php echo $resultado['cpf']; ?>" name="cpf" type="text" id="cpf" size="35" class="form-control"/>
+                                        <input maxlength="11" value="<?php echo $resultado['cpf']; ?>" name="cpf" type="text" id="cpf"  placeholder="CPF" size="35" class="form-control"/>
                                         <br>
                                         <input maxlength="100" value="<?php echo $resultado['email']; ?>" name="email" type="text" id="email" size="35" required="true" class="form-control"/>
                                         <br>

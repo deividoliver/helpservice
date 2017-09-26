@@ -3,15 +3,17 @@ require_once 'template/header.php';
 require_once 'funcoes/util.php';
 require_once 'funcoes/compra.php';
 
-$pagina = $_GET['pg'];
-$limete = 5;
-$totalResultados = comprasQtd();
-$totalpaginas = $totalResultados / $limete;
+if (!$_GET['pg']) {
+    validarCompra();
+}
 
-$offset = $limete * ($pagina - 1);
+    $pagina = $_GET['pg'];
+    $limete = 5;
+    $totalResultados = allComprasQtd();
+    $totalpaginas = $totalResultados / $limete;
+    $offset = $limete * ($pagina - 1);
 
-
-$servivos = getAllComprasLimit($limete, $offset);
+    $servivos = getAllComprasjoinLimit($limete, $offset);
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -48,25 +50,25 @@ $servivos = getAllComprasLimit($limete, $offset);
                                         <table class="table">
                                             <thead class="thead-inverse">
                                                 <tr>
-                                                    <th>ID</th>
+                                                    <th>Nome</th>
                                                     <th>Cadastro</th>
                                                     <th>moedas</th>
                                                     <th>valor</th>
-                                                    <th>User_ID</th>
+                                                    <th>valor</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
                                                 while ($linha = mysqli_fetch_assoc($servivos)) {
-                                                    echo "<tr>";
-                                                    echo '<th scope="row">';
-                                                    echo"$linha[id]";
-                                                    echo "</th>";
-                                                    echo "<td>$linha[cadastro]</td>";
-                                                    echo "<td>$linha[moedas]</td>";
-                                                    echo "<td>$linha[valor_total]</td>";
-                                                    echo "<td>$linha[usuario_id]</td>";
-                                                    echo "</tr>";
+                                                    ?>
+                                                    <tr>
+                                                        <th scope="row"><?php echo $linha['nome']; ?></th>
+                                                        <td><?PHP echo $linha['cadastro'] ?></td>
+                                                        <td><?PHP echo $linha['moedas'] ?></td>
+                                                        <td><?PHP echo $linha['valor_total'] ?></td>
+                                                        <td><a href="allCompras.php?id=<?PHP echo $linha['id'] ?>" class="btn btn-primary btn-block" id="enviar">Validar</a></td>
+                                                    </tr>
+                                                    <?PHP
                                                 }
                                                 ?>
                                             </tbody>
@@ -87,7 +89,7 @@ $servivos = getAllComprasLimit($limete, $offset);
                                                 </li>';
                                                 } else {
                                                     echo '<li class="page-item">';
-                                                    echo '<a class="page-link" href="allComprasUsuario.php?pg=';
+                                                    echo '<a class="page-link" href="allCompras.php?pg=';
                                                     echo "$anterior";
                                                     echo '">Anterior</a></li>';
                                                 }
@@ -103,7 +105,7 @@ $servivos = getAllComprasLimit($limete, $offset);
                                                         echo '</span>';
                                                         echo '</li>';
                                                     } else {
-                                                        echo '<li class = "page-item"><a class = "page-link" href = "allComprasUsuario.php?pg=';
+                                                        echo '<li class = "page-item"><a class = "page-link" href = "allCompras.php?pg=';
                                                         echo "$paginaComp";
                                                         echo '">';
                                                         echo "$paginaComp";
@@ -119,7 +121,7 @@ $servivos = getAllComprasLimit($limete, $offset);
                                                 </li>';
                                                 } else {
                                                     echo '<li class="page-item">';
-                                                    echo '<a class="page-link" href="allComprasUsuario.php?pg=';
+                                                    echo '<a class="page-link" href="allCompras.php?pg=';
                                                     echo "$proximo";
                                                     echo '">Próximo</a></li>';
                                                 }

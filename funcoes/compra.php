@@ -5,27 +5,55 @@ require_once 'funcoes/usuario.php';
 require_once 'funcoes/cotacao.php';
 
 function inserirCompra() {
-    
-    $erro = 0;
     $qtd = $_GET['qtd'];
+    $id = $_GET['id'];
     $user = getUsuarioDaSessao();
     $cotacao = getUltimaCotacao();
-    $valor = $cotacao[valor] * $qtd;
-    $novoSaldo = $user[saldo] + $qtd;
+    $valor = $cotacao['valor'] * $qtd;
 
-    if ($_GET['qtd'] == null) {
-        return mensagem('Valor não especificado') . redirect('compras.php');
+    if (!podeComprar($qtd, $id, $user['id'])) {
+        return mensagem('Não foi possível realizar a compra!') . redirect('compra.php');
     }
+    $con = conectar();
+    $query = "INSERT INTO compras (id, cadastro, moedas, status, valor_total, usuario_id, cotacao_id) VALUES (null, now(), $qtd, 'C', $valor, $user[id],  $cotacao[id])";
+    $rs = mysqli_query($con, $query);
 
-    if ($_GET['id']  == null || $_GET['id'] != $user[id]) {
-        return mensagem('Você não tem permissão para fazer compras') . redirect('index.php');
+    if ($rs) {
+        mysqli_close($con);
+        return mensagem('Compra realizada! Aguarde liberação do admin.') . redirect('compra.php');
+    } else {
+        mysqli_close($con);
+        return mensagem('Não foi possível comprar! tente novamente.') . redirect('compra.php');
     }
+}
 
-    $query1 = "INSERT INTO compras (id, cadastro, moedas, status, valor_total, usuario_id, cotacao_id) VALUES (null, now(), $qtd, A"
-            . ""
-            . ", $valor, $user[id],  $cotacao[id])";
-    $query2 = "UPDATE usuarios SET saldo='$novoSaldo' WHERE id = $user[id]";
+function validarCompra() {
+    $compra_id = $_GET['id'];
+    $compra = obterCompra($compra_id);
+    $user = getUsuarioDoServico($compra['usuario_id']);
+    $novoValor = $user['saldo'] + $compra['moedas'];
+    $query1 = "UPDATE compras SET status='A' WHERE id = $compra_id";
+    $query2 = "UPDATE usuarios SET saldo='$novoValor' WHERE id = $user[id]";
 
+    if (transacao($query1, $query2)) {
+        header("Location: allCompras.php?pg=1");
+        return mensagem('Compra validada com sucesso!').header("Location: allCompras.php?pg=1");
+    } else {
+        
+        return mensagem('Não foi possível validar a compra!').header("Location: allCompras.php?pg=1");
+    }
+}
+
+function podeComprar($qtd, $id_enviado, $id_logado) {
+    if ($qtd != null && $id_enviado != null && $id_enviado == $id_logado) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function transacao($query1, $query2) {
+    $erro = 0;
     $conexao = conectar();
     mysqli_autocommit($conexao, FALSE);
 
@@ -35,35 +63,39 @@ function inserirCompra() {
     if (!mysqli_query($conexao, $query2)) {
         $erro++;
     }
-
     if ($erro == 0) {
-        if (mysqli_commit($conexao)) {
-            mysqli_close($conexao);
-            return mensagem('Compra realizada com sucesso') . redirect('allComprasUsuario.php?pg=1');
-        } else {
-            mysqli_close($conexao);
-            return mensagem('Falha ao tentar comprar moedas');
-        }
+        mysqli_commit($conexao);
+        $mensagem = true;
     } else {
         mysqli_rollback($conexao);
-        mysqli_close($conexao);
-        return mensagem('Falha ao tentar comprar moedas');
+        $mensagem = false;
     }
+    mysqli_close($conexao);
+    return $mensagem;
 }
 
-function comprasQtd() {
+function allComprasQtd() {
     $con = conectar();
-    $query = "select * from compras where usuario_id = $_SESSION[id]";
+    $query = "SELECT * FROM compras where status = 'C'";
     $rs = mysqli_query($con, $query);
 
     mysqli_close($con);
     return mysqli_num_rows($rs);
 }
 
-function getAllComprasUsuarioLimit($limite, $offset) {
+function comprasAprovadaUsuarioQtd() {
+    $con = conectar();
+    $query = "select * from compras where usuario_id = $_SESSION[id] and status = 'A'";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    return mysqli_num_rows($rs);
+}
+
+function getAllComprasAprovadasUsuarioLimit($limite, $offset) {
     $user = getUsuarioDaSessao();
     $con = conectar();
-    $query = "select * from compras where usuario_id = $user[id] order by cadastro desc limit $limite offset $offset;";
+    $query = "select * from compras where usuario_id = $user[id] and status = 'A' order by cadastro desc limit $limite offset $offset;";
     $rs = mysqli_query($con, $query);
 
     mysqli_close($con);
@@ -79,6 +111,29 @@ function getAllComprasLimit($limite, $offset) {
     mysqli_close($con);
 
     return $rs;
+}
+
+function getAllComprasjoinLimit($limite, $offset) {
+    $con = conectar();
+    $query = "SELECT u.nome, c.valor_total, c.cadastro, c.moedas, c.id FROM usuarios u, compras c where c.usuario_id = u.id and c.status = 'C' order by cadastro desc limit $limite offset $offset;";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+
+    return $rs;
+}
+
+function obterCompra($id) {
+    $con = conectar();
+    $query = "SELECT * FROM compras WHERE id = $id";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    if (mysqli_num_rows($rs) == 0) {
+        return NULL;
+    } else {
+        return mysqli_fetch_assoc($rs);
+    }
 }
 
 ?>
