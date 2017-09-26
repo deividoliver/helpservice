@@ -88,16 +88,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `help_service`.`cotratacoes`
+-- Table `help_service`.`contratacoes`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `help_service`.`cotratacoes` ;
+DROP TABLE IF EXISTS `help_service`.`contratacoes` ;
 
-CREATE TABLE IF NOT EXISTS `help_service`.`cotratacoes` (
+CREATE TABLE IF NOT EXISTS `help_service`.`contratacoes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `servico_id` INT NOT NULL,
   `usuario_id` INT NOT NULL,
   `cadastro` DATETIME NOT NULL,
   `moedas` INT(11) NOT NULL,
+  `status` CHAR NOT NULL,
   `avaliacao` INT(11) NULL COMMENT 'avaliação de 1 até 5',
   PRIMARY KEY (`id`),
   INDEX `fk_cotratacoes_servicos1_idx` (`servico_id` ASC),
@@ -137,6 +138,7 @@ CREATE TABLE IF NOT EXISTS `help_service`.`compras` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `cadastro` DATETIME NOT NULL,
   `moedas` INT NOT NULL,
+  `status` CHAR NOT NULL,
   `valor_total` DECIMAL(7,2) NOT NULL,
   `usuario_id` INT NOT NULL,
   `cotacao_id` INT NOT NULL,

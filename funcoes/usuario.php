@@ -231,3 +231,32 @@ function limpaCelular($celular) {
     $celular = str_replace(" ", "", $celular);
     return $celular;
 }
+
+
+
+function getServicosSolicitados($id) {
+    $con = conectar();
+    $query = "SELECT count(*) as qtd FROM contratacoes WHERE contratacoes.usuario_id=$id and contratacoes.status = 'S'";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    return mysqli_fetch_assoc($rs);
+}
+
+function getServicosPendentes($id) {
+    $con = conectar();
+    $query = "SELECT count(*) as qtd FROM contratacoes,servicos WHERE servicos.usuario_id=$id and contratacoes.servico_id = servicos.id AND contratacoes.status = 'S'";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    return mysqli_fetch_assoc($rs);
+}
+
+function getServicosConcluidos($id) {
+    $con = conectar();
+    $query = "SELECT count(*) as qtd FROM contratacoes,servicos WHERE servicos.usuario_id=$id and contratacoes.servico_id = servicos.id AND contratacoes.status = 'C'";
+    $rs = mysqli_query($con, $query);
+
+    mysqli_close($con);
+    return mysqli_fetch_assoc($rs);
+}
