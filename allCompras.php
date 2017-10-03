@@ -3,17 +3,19 @@ require_once 'template/header.php';
 require_once 'funcoes/util.php';
 require_once 'funcoes/compra.php';
 
-if (!$_GET['pg']) {
+if (isset ($_GET['id'])) {
     validarCompra();
-}
+    
+//    redirect("allCompras.php?pg=1");
+} if(isset ($_GET['pg'])){
 
     $pagina = $_GET['pg'];
     $limete = 5;
     $totalResultados = allComprasQtd();
     $totalpaginas = $totalResultados / $limete;
     $offset = $limete * ($pagina - 1);
-
     $servivos = getAllComprasjoinLimit($limete, $offset);
+}
 ?>
 <!doctype html>
 <html lang="pt-BR">
@@ -66,7 +68,7 @@ if (!$_GET['pg']) {
                                                         <td><?PHP echo $linha['cadastro'] ?></td>
                                                         <td><?PHP echo $linha['moedas'] ?></td>
                                                         <td><?PHP echo $linha['valor_total'] ?></td>
-                                                        <td><a href="allCompras.php?id=<?PHP echo $linha['id'] ?>" class="btn btn-primary btn-block" id="enviar">Validar</a></td>
+                                                        <td><a href="allCompras.php?id=<?PHP echo $linha['id'] ?>&pg=1" class="btn btn-primary btn-block" id="enviar">Validar</a></td>
                                                     </tr>
                                                     <?PHP
                                                 }

@@ -36,11 +36,10 @@ function validarCompra() {
     $query2 = "UPDATE usuarios SET saldo='$novoValor' WHERE id = $user[id]";
 
     if (transacao($query1, $query2)) {
-        header("Location: allCompras.php?pg=1");
-        return mensagem('Compra validada com sucesso!').header("Location: allCompras.php?pg=1");
+        return mensagem('Compra validada com sucesso!');
     } else {
-        
-        return mensagem('Não foi possível validar a compra!').header("Location: allCompras.php?pg=1");
+       
+        return  mensagem('Não foi possível validar a compra!');
     }
 }
 
